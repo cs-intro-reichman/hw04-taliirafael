@@ -1,5 +1,10 @@
 public class ArrayOps {
     public static void main(String[] args) {
+
+        int[] testCase1 = {3, 0, 1};
+
+        System.out.println(findMissingInt(testCase1));
+    }
     
     public static int findMissingInt (int[] array) {
         // Write your code here:
@@ -16,8 +21,8 @@ public class ArrayOps {
             if (number == false) {
                return i; 
             }
+            return -1;
         }
-        return -1;
     }
 
     public static int secondMaxValue(int [] array) {
@@ -29,6 +34,7 @@ public class ArrayOps {
                 secondLarger = array[i];
             }
             if (array[i] > large) {
+                secondLarger = large;
                 large = array[i];
 
             }
@@ -61,7 +67,7 @@ public class ArrayOps {
             return true;
         }
 
-        boolean minOrMax = array[0] < array [1];
+        boolean minOrMax = array[0] < array[1];
         
         for (int i = 0; i < array.length; i++) {
             if (minOrMax) {
@@ -74,8 +80,7 @@ public class ArrayOps {
                 }
             }
         }
-    
         return true;
     }
 }
-}
+
