@@ -25,26 +25,30 @@ public class StringOps {
      * @param args
      */
     public static void main(String[] args) {
+           
+            System.out.println(capVowelsLowRest("Hello World"));
     
-
+    }
+        // public static String capVowelsLowRest (String s) {
     public static String capVowelsLowRest (String s) {
-        // Write your code here:
+    
         String lowerCaseString = "";
         for (int i = 0; i < s.length(); i++) {
             char letter = s.charAt(i);
             // lower case vowels to upper case
-            if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u' ) {
+            if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u') {
                 lowerCaseString += (char)(s.charAt(i) + 32);
             }
-        else {
-                    lowerCaseString += s.charAt(i);
+        else (letter > 'A' && letter < 'E' || letter > 'E' && letter < 'I' || letter > 'I' && letter < 'O' || letter > '0' && letter < 'U') {
+                    lowerCaseString += s.charAt(i - 32);
             }
         }
     return lowerCaseString;
     }
 
+       
 
-    public static char characterToUpperCase (char ch) {
+    public static char UpperCase (char ch) {
 
         // check if lower case character
         if (ch >= 97 && ch <= 122) {
@@ -74,12 +78,13 @@ public class StringOps {
             // upper case to lower case +32
             // lower case to upper case -32
         if (letter != "" && s.charAt(i - 1) == ' ') {
+            letter += characterToUpperCase(s.charAt(i));
             //letter += characterToUpperCase(s.charAt(i));
            // upperCaseString += (char)(s.charAt(i) + 32);
         } else {
            // lowerCaseString += (char)(s.charAt(i) - 32);
            letter += characterToLowerCase(s.charAt(i));
-        }
+            }
         }
 
         return letter;
@@ -87,7 +92,8 @@ public class StringOps {
 
 
     public static int[] allIndexOf (String str, char chr) {
-        int count = 0;
+        int indexOfXter = -1;
+        int indexFound = 0; 
         // for loop inside the for loop
 
         for (int i = 0; i < str.length(); i++) {
@@ -108,9 +114,11 @@ public class StringOps {
         return result;
     }
 
-    public static void printArray(int[] arr) {
-        System.out.print("{");
+    // public static void printArray(int[] arr) {
+        //System.out.print("{");
+       
         for (int i = 0; i < arr.length; i++) {
+            Object arr;
             System.out.print(arr[i]);
             if (i < arr.length - 1) {
                 System.out.print(", ");
@@ -118,6 +126,6 @@ public class StringOps {
         }
         
         System.out.println("}");
+        }
     }
-}
-    }
+    
