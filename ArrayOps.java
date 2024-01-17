@@ -1,9 +1,9 @@
 public class ArrayOps {
     public static void main(String[] args) {
 
-        int[] testCase1 = {1, 0, 3};
+        int[] testCase1 = {2,8,3,7,8};
 
-        System.out.println(findMissingInt(testCase1));
+        System.out.println(secondMaxValue(testCase1));
     }
     
     public static int findMissingInt (int[] array) {
@@ -31,7 +31,7 @@ public class ArrayOps {
         int secondLarger = 0;
 
         for (int i = 0; i < l; ++i) {
-            if (array[i] >= secondLarger) {
+            if (array[i] > secondLarger) {
                 secondLarger = large;
                 large = array[i];
             }
