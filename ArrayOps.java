@@ -1,8 +1,5 @@
 public class ArrayOps {
     public static void main(String[] args) {
-        
-        System.out.println(containsTheSameElements(new int[] {2, 2, 3, 7, 8, 3, 2}, new int[] {8, 2, 7, 7, 3}));
-    }
     
     public static int findMissingInt (int[] array) {
         // Write your code here:
@@ -80,5 +77,5 @@ public class ArrayOps {
     
         return true;
     }
-
+}
 }
