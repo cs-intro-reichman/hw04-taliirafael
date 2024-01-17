@@ -25,107 +25,97 @@ public class StringOps {
      * @param args
      */
     public static void main(String[] args) {
-           
-            System.out.println(capVowelsLowRest("Hello World"));
-    
-    }
-        // public static String capVowelsLowRest (String s) {
-    public static String capVowelsLowRest (String s) {
-    
-        String lowerCaseString = "";
-        for (int i = 0; i < s.length(); i++) {
-            char letter = s.charAt(i);
-            // lower case vowels to upper case
-            if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u') {
-                lowerCaseString += (char)(s.charAt(i) + 32);
-            }
-        else (letter > 'A' && letter < 'E' || letter > 'E' && letter < 'I' || letter > 'I' && letter < 'O' || letter > '0' && letter < 'U') {
-                    lowerCaseString += s.charAt(i - 32);
-            }
-        }
-    return lowerCaseString;
-    }
-
        
-
-    public static char UpperCase (char ch) {
-
-        // check if lower case character
-        if (ch >= 97 && ch <= 122) {
-            return (char) (ch - 32);
-        }
-
-        return ch;
     }
-    
-    public static char characterToLowerCase (char ch) {
-
-        // check if lower case character
-        if (ch >= 65 && ch <= 90) {
-            return (char) (ch + 32);
+ 
+    private static char lowerCaseXter(char c) {
+        if (c >= 'A' && c <= 'Z') {
+            return (char)(c + 32);
         }
-        return ch;
+        return c;
     }
-
-    public static String camelCase (String s) {
-        // Write your code here:
-        String letter = "";
-
-        for (int i = 0; i < s.length(); ++i) {
-            while (s.charAt(i) == ' ') {
-                ++i;
-            }
-            // upper case to lower case +32
-            // lower case to upper case -32
-        if (letter != "" && s.charAt(i - 1) == ' ') {
-            letter += characterToUpperCase(s.charAt(i));
-            //letter += characterToUpperCase(s.charAt(i));
-           // upperCaseString += (char)(s.charAt(i) + 32);
-        } else {
-           // lowerCaseString += (char)(s.charAt(i) - 32);
-           letter += characterToLowerCase(s.charAt(i));
-            }
+ 
+    private static char upperCaseXter(char c) {
+        if (c >= 'a' && c <= 'z') {
+            return (char)(c - 32);
         }
-
-        return letter;
+        return c;
     }
-
-
-    public static int[] allIndexOf (String str, char chr) {
-        int indexOfXter = -1;
-        int indexFound = 0; 
-        // for loop inside the for loop
-
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == chr); {
-            count ++;
+ 
+    private static boolean characterIsVowel(char c) {
+        switch (c) {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+            case 'A':
+            case 'E':
+            case 'I':
+            case 'O':
+            case 'U':
+                return true;
+            default:
+                return false;
         }
     }
-
-        int[] result = new int[count];
-        int index = 0;
-        
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == chr) {
-                result[index++] = i;
+ 
+    public static String capVowelsLowRest (String string) {
+        String result = "";
+ 
+        for (int i = 0; i < string.length(); ++i) {
+            if (characterIsVowel(string.charAt(i))) {
+                result += upperCaseXter(string.charAt(i));
+            } else {
+                result += lowerCaseXter(string.charAt(i));
             }
         }
-
         return result;
     }
 
-    // public static void printArray(int[] arr) {
-        //System.out.print("{");
-       
-        for (int i = 0; i < arr.length; i++) {
-            Object arr;
-            System.out.print(arr[i]);
-            if (i < arr.length - 1) {
-                System.out.print(", ");
+    public static String camelCase (String string) {
+        String result = "";
+ 
+        for (int i = 0; i < string.length(); ++i) {
+            // trim spaces
+            while (string.charAt(i) == ' ') {
+                ++i;
+            }
+ 
+            // we found first character already, make first character
+            // of new word uppercase
+            if (result != "" && string.charAt(i - 1) == ' ') {
+                result += upperCaseXter(string.charAt(i));
+            } else {
+                result += lowerCaseXter(string.charAt(i));
             }
         }
-        
-        System.out.println("}");
+        return result;
+    }
+
+    public static int[] allIndexOf (String string, char chr) {
+        int indexOfCharacter = -1;
+        int indexesFound = 0;
+       
+        // count number of characters that we have in the string
+        do {
+            indexOfCharacter = string.indexOf(chr, indexOfCharacter + 1);
+            if (indexOfCharacter != -1) {
+                indexesFound++;
+            }
+        } while (indexOfCharacter != -1); // didn't find character
+        // result is amount of indexes found :shrug:
+        int[] result = new int[indexesFound];
+        int indexIndex = 0;
+
+        // set the indices in the result array
+        do {
+            indexOfCharacter = string.indexOf(chr, indexOfCharacter + 1);
+            if (indexOfCharacter != -1) {
+                result[indexIndex++] = indexOfCharacter;
+            }
+        } while (indexOfCharacter != -1); // didn't find character
+
+        return result;
         }
     }
-    
